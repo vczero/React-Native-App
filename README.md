@@ -4,8 +4,8 @@ React-Native实战Simple App
 
 TODO:       
 
-+ 1、基于第三方数据构建美食App
-+ 2、基于第三方数据构建图书App
++ 1、基于React-Native & Node搭建内部通讯录App
++ 2、基于第三方数据构建美食App
 + 3、基于LBS的App
-+ 4、搭建通讯录App(包含Node.js服务端)
+
 
