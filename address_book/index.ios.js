@@ -1,53 +1,92 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
+/*
+* @description: 首页
+* @time: 2015-07-12
+* @author: vczero
+* */
 
+'use strict';
 var React = require('react-native');
+var Home = require('./views/home');
+
 var {
-  AppRegistry,
   StyleSheet,
-  Text,
   View,
+  TabBarIOS,
+  Text,
+  AppRegistry,
+  NavigatorIOS,
 } = React;
 
-var address_book = React.createClass({
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+var AddressBook =  React.createClass({
+  statics: {
+    title: '主页',
+    description: '选项卡'
+  },
+
+  getInitialState: function(){
+    return {
+      selectedTab: 'home'
+    };
+  },
+
+  _selectTab: function(tabName){
+    this.setState({
+      selectedTab: tabName
+    });
+
+  },
+
+  render: function(){
+    return(
+      <TabBarIOS barTintColor="#FFF">
+        <TabBarIOS.Item
+          icon={require('image!phone_s')}
+          title="首页"
+          selected={this.state.selectedTab === 'home'}
+          onPress={this._selectTab.bind(this, 'home')}
+          >
+          <NavigatorIOS
+            style={{flex:1}}
+            titleTextColor='#fff'
+            itemWrapperStyle={{borderColor:'blue'}}
+            initialRoute={{
+              component: Home,
+              title: "主页"
+            }}
+            />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title="公告"
+          icon={require('image!gonggao')}
+          selected={this.state.selectedTab === 'message'}
+          onPress={this._selectTab.bind(this, 'message')}
+          >
+          <View></View>
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title="管理"
+          icon={require('image!manager')}
+          selected={this.state.selectedTab === 'manager'}
+          onPress={this._selectTab.bind(this, 'manager')}
+          >
+          <View></View>
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title="关于"
+          icon={require('image!about')}
+          selected={this.state.selectedTab === 'about'}
+          onPress={this._selectTab.bind(this, 'about')}
+          >
+          <View></View>
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
+
 });
 
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
-AppRegistry.registerComponent('address_book', () => address_book);
+AppRegistry.registerComponent('address_book', () => AddressBook);
