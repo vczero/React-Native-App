@@ -4,6 +4,8 @@
 
 var React = require('react-native');
 var Util = require('../util');
+var ActionSheetIOS = require('ActionSheetIOS');
+
 
 var {
   View,
@@ -13,6 +15,7 @@ var {
   Image,
   TouchableHighlight,
   LinkingIOS,
+  AlertIOS,
 } = React;
 
 
@@ -38,12 +41,12 @@ var Address = React.createClass({
             </Text>
           </View>
           <View>
-            <TouchableHighlight underlayColor="#fff">
+            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet}>
               <Text style={styles.link}>
                 131-2764-4932
               </Text>
             </TouchableHighlight>
-            <TouchableHighlight underlayColor="#fff">
+            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet}>
               <Text style={styles.link}>
                 wlhmyit@126.com
               </Text>
@@ -61,6 +64,45 @@ var Address = React.createClass({
 
   _renderRow: function(type){
 
+  },
+
+  _openUrl: function(url, tips){
+    LinkingIOS.canOpenURL('tel://13127644932', (supported) => {
+      if (!supported) {
+        AlertIOS.alert('不能打开未安装的应用程序');
+      } else {
+        LinkingIOS.openURL(url);
+      }
+    });
+  },
+
+  showActionSheet() {
+    var options = [];
+    options.push('拨打电话');
+    options.push('发送短信');
+    options.push('发送邮件');
+    options.push('取消');
+
+    var events = [];
+    events.push(function(){
+      LinkingIOS.openURL('tel://');
+    });
+    events.push(function(){
+      LinkingIOS.openURL('sms://');
+    });
+    events.push(function(){
+      LinkingIOS.openURL('mailto://');
+    });
+
+
+    ActionSheetIOS.showActionSheetWithOptions({
+        options: options,
+        cancelButtonIndex: options.length - 1 ,
+      },
+      function(index){
+      events[index] && events[index]();
+    }
+    );
   }
 });
 
@@ -83,11 +125,12 @@ var styles = StyleSheet.create({
     marginRight:15,
   },
   link:{
-    color:'#1BB7FF'
+    color:'#1BB7FF',
+    marginTop:2,
   },
   unColor:{
     color: '#575656',
-    marginTop:5,
+    marginTop:8,
     fontSize:12,
   }
 });
