@@ -11,15 +11,16 @@ var {
 } = React;
 
 
-var Home = React.createClass({
+var Manager = React.createClass({
 
   render: function(){
     return (
       <ScrollView style={styles.container}>
-        <Text>主页</Text>
+        <Text>管理</Text>
       </ScrollView>
     );
   }
+
 });
 
 var styles = StyleSheet.create({
@@ -28,4 +29,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = Home;
+module.exports = Manager;

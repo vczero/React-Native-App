@@ -7,6 +7,9 @@
 'use strict';
 var React = require('react-native');
 var Home = require('./views/home');
+var About = require('./views/about');
+var Manager = require('./views/manager');
+var Message = require('./views/message');
 
 var {
   StyleSheet,
@@ -15,7 +18,10 @@ var {
   Text,
   AppRegistry,
   NavigatorIOS,
+  StatusBarIOS,
 } = React;
+
+StatusBarIOS.setStyle('light-content');
 
 var AddressBook =  React.createClass({
   statics: {
@@ -33,7 +39,19 @@ var AddressBook =  React.createClass({
     this.setState({
       selectedTab: tabName
     });
+  },
 
+  _addNavigator: function(component, title){
+    return <NavigatorIOS
+      style={{flex:1}}
+      barTintColor='#007AFF'
+      titleTextColor="#fff"
+      translucent={false}
+      initialRoute={{
+              component: component,
+              title: title,
+            }}
+      />;
   },
 
   render: function(){
@@ -45,15 +63,7 @@ var AddressBook =  React.createClass({
           selected={this.state.selectedTab === 'home'}
           onPress={this._selectTab.bind(this, 'home')}
           >
-          <NavigatorIOS
-            style={{flex:1}}
-            titleTextColor='#fff'
-            itemWrapperStyle={{borderColor:'blue'}}
-            initialRoute={{
-              component: Home,
-              title: "主页"
-            }}
-            />
+          {this._addNavigator(Home, '主页')}
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -62,7 +72,7 @@ var AddressBook =  React.createClass({
           selected={this.state.selectedTab === 'message'}
           onPress={this._selectTab.bind(this, 'message')}
           >
-          <View></View>
+          {this._addNavigator(Message, '公告')}
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -71,7 +81,7 @@ var AddressBook =  React.createClass({
           selected={this.state.selectedTab === 'manager'}
           onPress={this._selectTab.bind(this, 'manager')}
           >
-          <View></View>
+          {this._addNavigator(Manager, '管理')}
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -80,13 +90,14 @@ var AddressBook =  React.createClass({
           selected={this.state.selectedTab === 'about'}
           onPress={this._selectTab.bind(this, 'about')}
           >
-          <View></View>
+          {this._addNavigator(About, '关于')}
         </TabBarIOS.Item>
       </TabBarIOS>
     );
   }
 
 });
+
 
 
 AppRegistry.registerComponent('address_book', () => AddressBook);
