@@ -22,7 +22,6 @@ var {
 } = React;
 
 StatusBarIOS.setStyle('light-content');
-
 var AddressBook =  React.createClass({
   statics: {
     title: '主页',
