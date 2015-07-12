@@ -45,6 +45,7 @@ var AddressBook =  React.createClass({
       style={{flex:1}}
       barTintColor='#007AFF'
       titleTextColor="#fff"
+      tintColor="#fff"
       translucent={false}
       initialRoute={{
               component: component,

@@ -4,6 +4,7 @@
 
 var React = require('react-native');
 var Util = require('./util');
+var Address = require('./home/address');
 
 var {
   View,
@@ -22,7 +23,7 @@ var ItemBlock = React.createClass({
       backgroundColor: this.props.color,
     };
     return (
-      <TouchableHighlight underlayColor="#fff" onPress={this.props.loadContent}>
+      <TouchableHighlight underlayColor="#fff" onPress={this._loadPage}>
         <View style={[styles.itemBlock, size]}>
           <View>
             <Text style={styles.font18}>{this.props.title}</Text>
@@ -33,6 +34,17 @@ var ItemBlock = React.createClass({
         </View>
       </TouchableHighlight>
     );
+  },
+
+  _loadPage: function(){
+    var nav = this.props.nav;
+    nav.push({
+      title: this.props.desc,
+      component: Address,
+      passProps:{
+        type: this.props.title
+      }
+    });
   }
 });
 
@@ -46,32 +58,32 @@ var Home = React.createClass({
       {
         title: 'FRD',
         desc: '框架研发',
-        color: '#12B0FF'
+        color: '#12B0FF',
       },
       {
         title: 'BRD',
         desc: 'BU研发',
-        color: '#FFD600'
+        color: '#FFD600',
       },
       {
-        title: 'CPM',
+        title: 'PM',
         desc: '公共产品',
-        color: '#F80728'
+        color: '#F80728',
       },
       {
         title: 'BPM',
         desc: 'BU产品',
-        color: '#05C147'
+        color: '#05C147',
       },
       {
-        title: 'NP',
+        title: 'NPR',
         desc: '新产品',
-        color: '#FF4EB9'
+        color: '#FF4EB9',
       },
       {
-        title: 'PM',
+        title: 'MP',
         desc: '项目管理',
-        color: '#23F716'
+        color: '#23F716',
       }
     ];
 
@@ -93,7 +105,8 @@ var Home = React.createClass({
           desc={items[i].desc}
           width={this.state.width}
           color={items[i].color}
-          loadContent={()=>{}}
+          nav={this.props.navigator}
+          data={items[i].data}
           />
       );
     }
@@ -105,7 +118,8 @@ var Home = React.createClass({
           desc={items[i].desc}
           width={this.state.width}
           color={items[i].color}
-          loadContent={()=>{}}
+          nav={this.props.navigator}
+          data={items[i].data}
           />
       );
     }
