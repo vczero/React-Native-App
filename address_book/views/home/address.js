@@ -24,9 +24,16 @@ var Address = React.createClass({
     var items = [];
     for(var i = 0; i < 15; i++){
       var uri = 'https://avatars3.githubusercontent.com/u/6133685?v=3&s=50';
-      if(i % 2 === 0){
+      if(i % 4 === 0){
         uri = 'http://img1.gtimg.com/13/1309/130992/13099292_200x200_0.jpg';
       }
+      if(i % 4 === 1){
+        uri = 'http://tp1.sinaimg.cn/5396425536/180/5718431393/0';
+      }
+      if(i % 4 === 2){
+        uri = 'http://tp2.sinaimg.cn/1904769205/180/5728293682/1';
+      }
+
       items.push(
         <View style={styles.row}>
           <View>
@@ -37,10 +44,10 @@ var Address = React.createClass({
               王利华
             </Text>
             <Text style={styles.unColor}>
-              前端框架
+              框架研发部前端框架
             </Text>
           </View>
-          <View>
+          <View style={{flex:1}}>
             <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet}>
               <Text style={styles.link}>
                 131-2764-4932
@@ -122,7 +129,7 @@ var styles = StyleSheet.create({
   },
   part:{
     marginLeft:5,
-    marginRight:15,
+    flex:1,
   },
   link:{
     color:'#1BB7FF',
