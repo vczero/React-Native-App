@@ -15,10 +15,10 @@ var {
 var Item = React.createClass({
   render: function(){
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.loadPage}>
         <View style={styles.item}>
           <View style={styles.width55}>
-            <Image style={styles.img} source={{uri: this.props.url}}/>
+            <Image style={styles.img} source={{uri: this.props.pic}}/>
           </View>
           <View style={{flexDirection:'column',flex:1}}>
             <Text numberOfLines={2} style={styles.text}>
@@ -34,6 +34,15 @@ var Item = React.createClass({
         </View>
       </TouchableOpacity>
     );
+  },
+  loadPage: function(){
+    this.props.nav.push({
+      title:'消息详情',
+      component: this.props.component,
+      passProps:{
+        content:'id:xxxxidinddjhhfjjdjsgsggsss'
+      }
+    });
   }
 });
 
@@ -58,6 +67,7 @@ var styles = StyleSheet.create({
   text:{
     flex:1,
     marginBottom:5,
+    opacity:0.7
   },
   date:{
     color:'#ccc',
