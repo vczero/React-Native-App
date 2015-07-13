@@ -35,7 +35,7 @@ var ItemBlock = React.createClass({
     );
   },
   //加载页面
-  _loadPage: function(){
+  _loadPage: function(e){
     var nav = this.props.nav;
     nav.push({
       title: this.props.desc,

@@ -21,34 +21,34 @@ var Home = React.createClass({
     var width = Math.floor(((Util.size.width - 20) - 50) / 4);
     var items = [
       {
-        title: 'FRD',
+        title: '研发',
         desc: '框架研发',
-        color: '#12B0FF',
+        color: '#1992F5',
       },
       {
-        title: 'BRD',
+        title: '研发',
         desc: 'BU研发',
         color: '#FFD600',
       },
       {
-        title: 'PM',
+        title: '产品',
         desc: '公共产品',
         color: '#F80728',
       },
       {
-        title: 'BPM',
+        title: '产品',
         desc: 'BU产品',
         color: '#05C147',
       },
       {
-        title: 'NPR',
-        desc: '新产品',
+        title: '产品',
+        desc: '启明星',
         color: '#FF4EB9',
       },
       {
-        title: 'MP',
+        title: '项目',
         desc: '项目管理',
-        color: '#23F716',
+        color: '#EE810D',
       }
     ];
 

@@ -7,27 +7,22 @@ var {
   WebView,
   ScrollView,
   Text,
+  View,
 } = React;
 
 
-var WebView = React.createClass({
+var webview = React.createClass({
 
   render: function(){
+    console.log(this.props.url);
     return(
-      <ScrollView style={{flex:1}}>
-        <View style={{flex:1}}>
-          <WebView url={this.props.url}/>
-        </View>
-
-      </ScrollView>
+      <View style={{flex:1}}>
+        <WebView url={this.props.url}/>
+      </View>
     );
   }
 
 });
 
-<WebView
-  style={{flex:1}}
-  startInLoadingState={true}
-  url={this.props.url}/>
 
-module.exports = WebView;
+module.exports = webview;
