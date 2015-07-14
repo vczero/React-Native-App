@@ -19,11 +19,15 @@ module.exports = {
     }).toUpperCase();
   },
 
-  md5:  function(password){
+  md5: function(password){
     var md5 = crypto.createHash('md5');
     var salt = '(!%$88hs@gophs*)#sassb9';
     var newPwd = md5.update(password + salt).digest('hex');
     return newPwd;
+  },
+
+  getKey: function(){
+    return 'HSHHSGSGGSTWSYWSYUSUWSHWBS-REACT-NATIVE';
   }
 
 };

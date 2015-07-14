@@ -14,7 +14,6 @@ var {
 var webview = React.createClass({
 
   render: function(){
-    console.log(this.props.url);
     return(
       <View style={{flex:1}}>
         <WebView url={this.props.url}/>

@@ -1,8 +1,3 @@
-/*
-* @description: 首页
-* @time: 2015-07-12
-* @author: vczero
-* */
 
 'use strict';
 var React = require('react-native');
@@ -10,19 +5,20 @@ var Home = require('./views/home');
 var About = require('./views/about');
 var Manager = require('./views/manager');
 var Message = require('./views/message');
+var Login = require('./views/login');
 
 var {
   StyleSheet,
   View,
   TabBarIOS,
   Text,
-  AppRegistry,
   NavigatorIOS,
+  AppRegistry,
   StatusBarIOS,
-} = React;
+  } = React;
 
 StatusBarIOS.setStyle('light-content');
-var AddressBook =  React.createClass({
+var Address =  React.createClass({
   statics: {
     title: '主页',
     description: '选项卡'
@@ -30,7 +26,16 @@ var AddressBook =  React.createClass({
 
   getInitialState: function(){
     return {
-      selectedTab: 'home'
+      selectedTab: 'home',
+      showIndex: {
+        height:0
+      },
+      showLogin:{
+        flex:1
+      },
+      showTabBar:{
+        opacity:0
+      }
     };
   },
 
@@ -56,43 +61,53 @@ var AddressBook =  React.createClass({
 
   render: function(){
     return(
-      <TabBarIOS barTintColor="#FFF">
-        <TabBarIOS.Item
-          icon={require('image!phone_s')}
-          title="首页"
-          selected={this.state.selectedTab === 'home'}
-          onPress={this._selectTab.bind(this, 'home')}
-          >
-          {this._addNavigator(Home, '主页')}
-        </TabBarIOS.Item>
+      <View style={{flex:1}}>
 
-        <TabBarIOS.Item
-          title="公告"
-          icon={require('image!gonggao')}
-          selected={this.state.selectedTab === 'message'}
-          onPress={this._selectTab.bind(this, 'message')}
-          >
-          {this._addNavigator(Message, '公告')}
-        </TabBarIOS.Item>
+        <View style={this.state.showLogin}>
+          <Login></Login>
+        </View>
 
-        <TabBarIOS.Item
-          title="管理"
-          icon={require('image!manager')}
-          selected={this.state.selectedTab === 'manager'}
-          onPress={this._selectTab.bind(this, 'manager')}
-          >
-          {this._addNavigator(Manager, '管理')}
-        </TabBarIOS.Item>
+        <View style={this.state.showIndex}>
+          <TabBarIOS barTintColor="#FFF" style={this.state.showTabBar}>
+            <TabBarIOS.Item
+              icon={require('image!phone_s')}
+              title="首页"
+              selected={this.state.selectedTab === 'home'}
+              onPress={this._selectTab.bind(this, 'home')}
+              >
+              {this._addNavigator(Home, '主页')}
+            </TabBarIOS.Item>
 
-        <TabBarIOS.Item
-          title="关于"
-          icon={require('image!about')}
-          selected={this.state.selectedTab === 'about'}
-          onPress={this._selectTab.bind(this, 'about')}
-          >
-          {this._addNavigator(About, '关于')}
-        </TabBarIOS.Item>
-      </TabBarIOS>
+            <TabBarIOS.Item
+              title="公告"
+              icon={require('image!gonggao')}
+              selected={this.state.selectedTab === 'message'}
+              onPress={this._selectTab.bind(this, 'message')}
+              >
+              {this._addNavigator(Message, '公告')}
+            </TabBarIOS.Item>
+
+            <TabBarIOS.Item
+              title="管理"
+              icon={require('image!manager')}
+              selected={this.state.selectedTab === 'manager'}
+              onPress={this._selectTab.bind(this, 'manager')}
+              >
+              {this._addNavigator(Manager, '管理')}
+            </TabBarIOS.Item>
+
+            <TabBarIOS.Item
+              title="关于"
+              icon={require('image!about')}
+              selected={this.state.selectedTab === 'about'}
+              onPress={this._selectTab.bind(this, 'about')}
+              >
+              {this._addNavigator(About, '关于')}
+            </TabBarIOS.Item>
+          </TabBarIOS>
+        </View>
+
+      </View>
     );
   }
 
@@ -100,4 +115,5 @@ var AddressBook =  React.createClass({
 
 
 
-AppRegistry.registerComponent('address_book', () => AddressBook);
+
+AppRegistry.registerComponent('address_book', () => Address);
