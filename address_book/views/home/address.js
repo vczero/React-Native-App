@@ -5,6 +5,7 @@
 var React = require('react-native');
 var Util = require('../util');
 var ActionSheetIOS = require('ActionSheetIOS');
+var Service = require('./../service');
 
 
 var {
@@ -20,6 +21,17 @@ var {
 
 
 var Address = React.createClass({
+  componentDidMount: function(){
+    var key = Util.key;
+    var tag = this.props.type;
+    var path = Service.host + Service.getUser;
+    Util.post(path, {
+      key: key,
+      tag: '前端框架组'
+    }, function(data){
+      console.log(data);
+    });
+  },
   render: function(){
     var items = [];
     for(var i = 0; i < 15; i++){

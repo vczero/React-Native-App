@@ -41,7 +41,7 @@ var ItemBlock = React.createClass({
       title: this.props.desc,
       component: Address,
       passProps:{
-        type: this.props.title
+        type: this.props.desc
       }
     });
   }

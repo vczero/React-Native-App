@@ -53,17 +53,24 @@ var Address =  React.createClass({
     var that = this;
     AsyncStorage.getItem('token', function(err, token){
       if(!err && token){
-        that.setState({
-          showLogin: {
-            height:0,
-            width:0,
-            flex:0,
-          },
-          showIndex:{
-            flex:1,
-            opacity:1
-          },
-          isLoadingShow: false
+        var path = Service.host + Service.loginByToken;
+        Util.post(path, {
+          token: token
+        },function(data){
+          if(data.status){
+            that.setState({
+              showLogin: {
+                height:0,
+                width:0,
+                flex:0,
+              },
+              showIndex:{
+                flex:1,
+                opacity:1
+              },
+              isLoadingShow: false
+            });
+          }
         });
       }
     });

@@ -7,26 +7,38 @@ var USER_PATH = './database/user.json';
 var User = {
 
   init: function(app){
-    app.get('/user/get', this.getUser);
+    app.post('/user/get', this.getUser);
     app.get('/user/create', this.addUser);
     app.post('/user/login', this.login);
-    app.get('/user/login/token', this.loginByToken);
+    app.post('/user/login/token', this.loginByToken);
     app.get('/user/password/update', this.updatePassword);
     app.get('/user/delete', this.deleteUser);
   },
 
   //获取用户信息
   getUser: function(req, res){
+    var key = req.param('key');
+    var tag = req.param('tag');
+    if(key !== util.getKey()){
+      return res.send({
+        status: 0,
+        data: '使用了没有鉴权的key'
+      });
+    }
     fs.readFile(USER_PATH, function(err, data){
       if(!err){
         try{
           var obj = JSON.parse(data);
+          var newObj = [];
           for(var i in obj){
-            delete obj[i]['password'];
+            if(obj[i].tag === tag){
+              delete obj[i]['password'];
+              newObj.push(obj[i]);
+            }
           }
           return res.send({
             status: 1,
-            data: obj
+            data: newObj
           });
         }catch(e){
           return res.send({

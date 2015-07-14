@@ -37,7 +37,9 @@ var Util = {
     .then((responseText) => {
       callback(JSON.parse(responseText));
     });
-  }
+  },
+  //Key
+  key: 'HSHHSGSGGSTWSYWSYUSUWSHWBS-REACT-NATIVE'
 
 };
 
