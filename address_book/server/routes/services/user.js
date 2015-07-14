@@ -9,7 +9,7 @@ var User = {
   init: function(app){
     app.get('/user/get', this.getUser);
     app.get('/user/create', this.addUser);
-    app.get('/user/login', this.login);
+    app.post('/user/login', this.login);
     app.get('/user/login/token', this.loginByToken);
     app.get('/user/password/update', this.updatePassword);
     app.get('/user/delete', this.deleteUser);

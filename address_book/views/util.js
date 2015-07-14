@@ -1,9 +1,6 @@
-/**
- * Created by lihua on 15/7/12.
- */
+
 
 var React = require('react-native');
-var AdSupportIOS = require('AdSupportIOS');
 var Dimensions = require('Dimensions');
 //var KeyboardEvents = require('react-native-keyboardevents');
 //var KeyboardEventEmitter = KeyboardEvents.Emitter;
@@ -22,6 +19,24 @@ var Util = {
   size: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height
+  },
+
+  //post请求
+  post: function (url, data, callback) {
+    var fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+
+    fetch(url, fetchOptions)
+    .then((response) => response.text())
+    .then((responseText) => {
+      callback(JSON.parse(responseText));
+    });
   }
 
 };
