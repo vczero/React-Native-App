@@ -18,8 +18,8 @@ var Manager = React.createClass({
 
   render: function(){
     var colors = ['#F4000B', '#17B4FF', '#FFD900', '#3BC1FF', '#F00000'];
-    var tags = ['A', 'D', 'U', 'M'];
-    var items = ['增加联系人', '删除联系人', '更新联系人', '发布公告'];
+    var tags = ['U', 'A', 'D', 'U', 'M'];
+    var items = ['修改个人信息', '增加联系人', '删除联系人', '更新联系人', '发布公告'];
     var JSXDOM = [];
     for(var i in items){
       JSXDOM.push(
