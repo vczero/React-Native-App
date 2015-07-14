@@ -23,7 +23,7 @@ var Home = React.createClass({
       {
         title: '研发',
         desc: '框架研发',
-        color: '#1992F5',
+        color: '#126AFF',
       },
       {
         title: '研发',
