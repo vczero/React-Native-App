@@ -1,4 +1,3 @@
-
 'use strict';
 var React = require('react-native');
 var Home = require('./views/home');
@@ -17,10 +16,13 @@ var {
   Image,
   TextInput,
   StatusBarIOS,
+  ScrollView,
   TouchableHighlight,
   } = React;
 
 StatusBarIOS.setStyle('light-content');
+
+
 var Address =  React.createClass({
   statics: {
     title: '主页',
@@ -62,43 +64,25 @@ var Address =  React.createClass({
   },
 
   _login: function(){
+    //隐藏登录页，加载主页
     this.setState({
       showLogin: {
-        //opacity:0,
-        height:18,
-        backgroundColor: '#000',
+        height:0,
+        width:0,
+        flex:0,
       },
       showIndex:{
         flex:1,
         opacity:1
       }
     });
+
+
   },
 
   render: function(){
     return(
       <View style={{flex:1}}>
-
-        <View style={[this.state.showLogin]}>
-          <View style={styles.container}>
-            <View>
-              <Image style={styles.logo} source={require('image!logo')}></Image>
-            </View>
-
-            <View style={styles.inputRow}>
-              <Text>邮箱</Text><TextInput style={styles.input} placeholder="请输入邮箱"/>
-            </View>
-            <View style={styles.inputRow}>
-              <Text>密码</Text><TextInput style={styles.input} placeholder="请输入密码" password={true}/>
-            </View>
-
-            <View>
-              <TouchableHighlight underlayColor="#fff" style={styles.btn} onPress={this._login}>
-                <Text style={{color:'#fff'}}>登录</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
-        </View>
 
         <View style={this.state.showIndex}>
           <TabBarIOS barTintColor="#FFF">
@@ -139,6 +123,27 @@ var Address =  React.createClass({
             </TabBarIOS.Item>
           </TabBarIOS>
         </View>
+
+        <ScrollView style={[this.state.showLogin]}>
+          <View style={styles.container}>
+            <View>
+              <Image style={styles.logo} source={require('image!logo')}></Image>
+            </View>
+
+            <View style={styles.inputRow}>
+              <Text>邮箱</Text><TextInput style={styles.input} placeholder="请输入邮箱" on/>
+            </View>
+            <View style={styles.inputRow}>
+              <Text>密码</Text><TextInput style={styles.input} placeholder="请输入密码" password={true}/>
+            </View>
+
+            <View>
+              <TouchableHighlight underlayColor="#fff" style={styles.btn} onPress={this._login}>
+                <Text style={{color:'#fff'}}>登录</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </ScrollView>
 
       </View>
     );
