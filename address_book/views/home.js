@@ -22,32 +22,32 @@ var Home = React.createClass({
     var items = [
       {
         title: '研发',
-        desc: '框架研发',
+        tag: '框架研发',
         color: '#126AFF',
       },
       {
         title: '研发',
-        desc: 'BU研发',
+        tag: 'BU研发',
         color: '#FFD600',
       },
       {
         title: '产品',
-        desc: '公共产品',
+        tag: '公共产品',
         color: '#F80728',
       },
       {
         title: '产品',
-        desc: 'BU产品',
+        tag: 'BU产品',
         color: '#05C147',
       },
       {
         title: '产品',
-        desc: '启明星',
+        tag: '启明星',
         color: '#FF4EB9',
       },
       {
         title: '项目',
-        desc: '项目管理',
+        tag: '项目管理',
         color: '#EE810D',
       }
     ];
@@ -67,11 +67,10 @@ var Home = React.createClass({
       Items1.push(
         <ItemBlock
           title={items[i].title}
-          desc={items[i].desc}
+          tag={items[i].tag}
           width={this.state.width}
           color={items[i].color}
           nav={this.props.navigator}
-          data={items[i].data}
           />
       );
     }
@@ -80,11 +79,10 @@ var Home = React.createClass({
       Items2.push(
         <ItemBlock
           title={items[i].title}
-          desc={items[i].desc}
+          tag={items[i].tag}
           width={this.state.width}
           color={items[i].color}
           nav={this.props.navigator}
-          data={items[i].data}
           />
       );
     }

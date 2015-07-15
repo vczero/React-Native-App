@@ -5,6 +5,9 @@
 var React = require('react-native');
 var Address = require('./address');
 
+var Service = require('./../service');
+var Util = require('../util');
+
 var {
   View,
   Text,
@@ -28,7 +31,7 @@ var ItemBlock = React.createClass({
             <Text style={styles.font18}>{this.props.title}</Text>
           </View>
           <View>
-            <Text style={styles.font10}>{this.props.desc}</Text>
+            <Text style={styles.font10}>{this.props.tag}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -37,13 +40,22 @@ var ItemBlock = React.createClass({
   //加载页面
   _loadPage: function(e){
     var nav = this.props.nav;
-    nav.push({
-      title: this.props.desc,
-      component: Address,
-      passProps:{
-        type: this.props.desc
-      }
-    });
+    var key = Util.key;
+    var tag = this.props.tag;
+    var path = Service.host + Service.getUser;
+    Util.post(path, {
+      key: key,
+      tag : tag
+    }, function(data){
+      nav.push({
+        title: this.props.desc,
+        component: Address,
+        passProps:{
+          data: data
+        }
+      });
+    }.bind(this));
+
   }
 });
 

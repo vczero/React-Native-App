@@ -7,7 +7,6 @@ var Util = require('../util');
 var ActionSheetIOS = require('ActionSheetIOS');
 var Service = require('./../service');
 
-
 var {
   View,
   Text,
@@ -21,53 +20,36 @@ var {
 
 
 var Address = React.createClass({
-  componentDidMount: function(){
-    var key = Util.key;
-    var tag = this.props.type;
-    var path = Service.host + Service.getUser;
-    Util.post(path, {
-      key: key,
-      tag: '前端框架组'
-    }, function(data){
-      console.log(data);
-    });
-  },
   render: function(){
-    var items = [];
-    for(var i = 0; i < 15; i++){
-      var uri = 'https://avatars3.githubusercontent.com/u/6133685?v=3&s=50';
-      if(i % 4 === 0){
-        uri = 'http://img1.gtimg.com/13/1309/130992/13099292_200x200_0.jpg';
-      }
-      if(i % 4 === 1){
-        uri = 'http://tp1.sinaimg.cn/5396425536/180/5718431393/0';
-      }
-      if(i % 4 === 2){
-        uri = 'http://tp2.sinaimg.cn/1904769205/180/5728293682/1';
-      }
-
-      items.push(
+    var view = [];
+    var items = this.props.data.status? this.props.data.data: [];
+    var colors = ['#E20079', '#FFD602', '#25BFFE', '#F90000', '#04E246', '#04E246', '#00AFC9'];
+    var color = {
+      backgroundColor: colors[parseInt(Math.random()*7)]
+    };
+    for(var i in items){
+      view.push(
         <View style={styles.row}>
-          <View>
-            <Image style={styles.avatar} source={{uri:uri}}/>
+          <View style={[styles.text, color]}>
+            <Text style={{fontSize:25, color:'#fff', fontWeight:'bold'}}>{items[i].username.substr(0, 1) || '未'}</Text>
           </View>
           <View style={styles.part}>
             <Text>
-              王利华
+              {items[i].username}
             </Text>
             <Text style={styles.unColor}>
-              框架研发部前端框架
+              {(items[i].apartment||'') + (items[i].tag||'')}
             </Text>
           </View>
           <View style={{flex:1}}>
-            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet}>
+            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet.bind(this, items[i].tel, items[i].email, items[i].username)}>
               <Text style={styles.link}>
-                131-2764-4932
+                {items[i].tel}
               </Text>
             </TouchableHighlight>
-            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet}>
+            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet.bind(this, items[i].tel, items[i].email, items[i].username)}>
               <Text style={styles.link}>
-                wlhmyit@126.com
+                {items[i].email}
               </Text>
             </TouchableHighlight>
           </View>
@@ -76,41 +58,27 @@ var Address = React.createClass({
     }
     return (
       <ScrollView>
-        {items}
+        {view}
       </ScrollView>
     );
   },
 
-  _renderRow: function(type){
-
-  },
-
-  _openUrl: function(url, tips){
-    LinkingIOS.canOpenURL('tel://13127644932', (supported) => {
-      if (!supported) {
-        AlertIOS.alert('不能打开未安装的应用程序');
-      } else {
-        LinkingIOS.openURL(url);
-      }
-    });
-  },
-
-  showActionSheet() {
+  showActionSheet(tel, email, name) {
     var options = [];
-    options.push('拨打电话');
-    options.push('发送短信');
-    options.push('发送邮件');
+    options.push('拨打电话给：' + name);
+    options.push('发送短信给：' + name);
+    options.push('发送邮件给：' + name);
     options.push('取消');
 
     var events = [];
     events.push(function(){
-      LinkingIOS.openURL('tel://');
+      LinkingIOS.openURL('tel://' + tel);
     });
     events.push(function(){
-      LinkingIOS.openURL('sms://');
+      LinkingIOS.openURL('sms://' + tel);
     });
     events.push(function(){
-      LinkingIOS.openURL('mailto://');
+      LinkingIOS.openURL('mailto://' + email);
     });
 
 
@@ -133,11 +101,14 @@ var styles = StyleSheet.create({
     flexDirection:'row',
     alignItems:'center'
   },
-  avatar:{
+  text:{
     width:50,
     height:50,
     borderRadius:4,
     marginLeft:10,
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor: '#E30082',
   },
   part:{
     marginLeft:5,
