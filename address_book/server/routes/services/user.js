@@ -61,7 +61,7 @@ var User = {
     var password = util.md5(req.param('password'));
     var tel = req.param('tel');
     var email = req.param('email');
-    var apartment =  req.param('apartment');
+    var partment =  req.param('partment');
     var tag = req.param('tag');
     var creater = req.param('creater');
 
@@ -71,7 +71,7 @@ var User = {
         "userid": util.guid(),
         "username": username,
         "password": password,
-        "apartment": apartment,
+        "partment": partment,
         "tel": tel,
         "email": email,
         "tag": tag,

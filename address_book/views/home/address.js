@@ -1,6 +1,4 @@
-/**
- * Created by lihua on 15/7/12.
- */
+
 
 var React = require('react-native');
 var Util = require('../util');
@@ -38,7 +36,7 @@ var Address = React.createClass({
               {items[i].username}
             </Text>
             <Text style={styles.unColor}>
-              {(items[i].apartment||'') + (items[i].tag||'')}
+              {(items[i].partment||'') + (items[i].tag||'')}
             </Text>
           </View>
           <View style={{flex:1}}>

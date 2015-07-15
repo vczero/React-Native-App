@@ -96,22 +96,22 @@ var Address =  React.createClass({
       />;
   },
 
-  _getUserName: function(val){
-    var username = val;
+  _getEmail: function(val){
+    var email = val;
     this.setState({
-      username: username
+      email: email
     });
   },
 
   _getPassword: function(val){
     var password = val;
     this.setState({
-      username: password
+      password: password
     });
   },
 
   _login: function(){
-    var username = this.state.username;
+    var email = this.state.email;
     var password = this.state.password;
     var path = Service.host + Service.login;
     var that = this;
@@ -128,8 +128,8 @@ var Address =  React.createClass({
     AdSupportIOS.getAdvertisingTrackingEnabled(function(){
       AdSupportIOS.getAdvertisingId(function(deviceId){
         Util.post(path, {
-          email: 'wlhmyit@126.com',
-          password: '123456',
+          email: email,
+          password: password,
           deviceId: deviceId,
         }, function(data){
           if(data.status){
@@ -141,7 +141,7 @@ var Address =  React.createClass({
               ['userid', user.userid],
               ['email', user.email],
               ['tel', user.tel],
-              ['apartment', user.apartment],
+              ['partment', user.partment],
               ['tag', user.tag],
             ], function(err){
               if(!err){
@@ -240,7 +240,7 @@ var Address =  React.createClass({
             </View>
 
             <View style={styles.inputRow}>
-              <Text>邮箱</Text><TextInput style={styles.input} placeholder="请输入邮箱" onChangeText={this._getUserName}/>
+              <Text>邮箱</Text><TextInput style={styles.input} placeholder="请输入邮箱" onChangeText={this._getEmail}/>
             </View>
             <View style={styles.inputRow}>
               <Text>密码</Text><TextInput style={styles.input} placeholder="请输入密码" password={true} onChangeText={this._getPassword}/>

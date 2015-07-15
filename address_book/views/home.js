@@ -95,11 +95,7 @@ var Home = React.createClass({
         <View style={styles.itemRow}>
           {Items2}
         </View>
-        <View>
-          <TouchableHighlight onPress={this._clear}>
-            <Text>清除临时数据</Text>
-          </TouchableHighlight>
-        </View>
+
       </ScrollView>
     );
   }

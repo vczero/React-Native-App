@@ -1,6 +1,3 @@
-/**
- * Created by lihua on 15/7/12.
- */
 
 var React = require('react-native');
 var Address = require('./address');

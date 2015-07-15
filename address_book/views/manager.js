@@ -1,9 +1,10 @@
-/**
- * Created by vczero on 15/7/12.
- */
 
 var React = require('react-native');
 var Util = require('./util');
+var AddUser = require('./manager/addUser');
+var ModifyUser = require('./manager/modifyUser');
+var DeleteUser = require('./manager/deleteUser');
+var PostMessage = require('./manager/postMessage');
 
 var {
   View,
@@ -11,19 +12,21 @@ var {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  AsyncStorage,
 } = React;
 
 
 var Manager = React.createClass({
 
   render: function(){
-    var colors = ['#F4000B', '#17B4FF', '#FFD900', '#3BC1FF', '#F00000'];
-    var tags = ['U', 'A', 'D', 'U', 'M'];
-    var items = ['修改个人信息', '增加联系人', '删除联系人', '更新联系人', '发布公告'];
+    var colors = ['#F4000B', '#17B4FF', '#FFD900', '#F00000'];
+    var tags = ['U', 'A', 'D', 'M'];
+    var items = ['修改个人信息', '增加联系人', '删除联系人',  '发布公告'];
+    var components = [ModifyUser, AddUser, DeleteUser, PostMessage];
     var JSXDOM = [];
     for(var i in items){
       JSXDOM.push(
-        <TouchableOpacity>
+        <TouchableOpacity onPress={this._loadPage.bind(this, components[i])}>
           <View style={[styles.item, {flexDirection:'row'}]}>
             <Text style={[styles.tag, {color: colors[i]}]}>{tags[i]}</Text>
             <Text style={[styles.font,{flex:1}]}>{items[i]}</Text>
@@ -32,16 +35,36 @@ var Manager = React.createClass({
       );
     }
 
+
     return (
       <ScrollView style={styles.container}>
-
         <View style={styles.wrapper}>
           {JSXDOM}
         </View>
 
+        <View style={{marginTop:30}}>
+          <TouchableOpacity onPress={this._clear}>
+            <View style={[styles.item, {flexDirection:'row'}]}>
+              <Text style={[styles.tag, {color: colors[i]}]}>Q</Text>
+              <Text style={[styles.font,{flex:1}]}>退出登录</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     );
   },
+
+  _loadPage: function(component){
+    this.props.navigator.push({
+      title: '增加联系人',
+      component: component
+    });
+  },
+
+  _clear: function(){
+    this.props.navigator.pop();
+    AsyncStorage.clear();
+  }
 
 });
 
