@@ -8,7 +8,7 @@ var User = {
 
   init: function(app){
     app.post('/user/get', this.getUser);
-    app.get('/user/create', this.addUser);
+    app.post('/user/create', this.addUser);
     app.post('/user/login', this.login);
     app.post('/user/login/token', this.loginByToken);
     app.get('/user/password/update', this.updatePassword);
@@ -18,7 +18,7 @@ var User = {
   //获取用户信息
   getUser: function(req, res){
     var key = req.param('key');
-    var tag = req.param('tag');
+    var partment = req.param('partment');
     if(key !== util.getKey()){
       return res.send({
         status: 0,
@@ -31,7 +31,7 @@ var User = {
           var obj = JSON.parse(data);
           var newObj = [];
           for(var i in obj){
-            if(obj[i].tag === tag){
+            if(obj[i].partment === partment){
               delete obj[i]['password'];
               newObj.push(obj[i]);
             }
@@ -63,7 +63,14 @@ var User = {
     var email = req.param('email');
     var partment =  req.param('partment');
     var tag = req.param('tag');
-    var creater = req.param('creater');
+    var creater = req.param('creater') || '';
+
+    if(!username || !password || !tel || !email || !partment || !tag){
+      return res.send({
+        status: 0,
+        data: '缺少必要参数'
+      });
+    }
 
     try{
       var content = JSON.parse(fs.readFileSync(USER_PATH));

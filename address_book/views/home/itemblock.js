@@ -28,7 +28,7 @@ var ItemBlock = React.createClass({
             <Text style={styles.font18}>{this.props.title}</Text>
           </View>
           <View>
-            <Text style={styles.font10}>{this.props.tag}</Text>
+            <Text style={styles.font10}>{this.props.partment}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -38,14 +38,15 @@ var ItemBlock = React.createClass({
   _loadPage: function(e){
     var nav = this.props.nav;
     var key = Util.key;
-    var tag = this.props.tag;
+    var partment = this.props.partment;
     var path = Service.host + Service.getUser;
+
     Util.post(path, {
       key: key,
-      tag : tag
+      partment : partment
     }, function(data){
       nav.push({
-        title: this.props.desc,
+        title: this.props.tag,
         component: Address,
         passProps:{
           data: data

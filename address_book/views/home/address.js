@@ -36,7 +36,7 @@ var Address = React.createClass({
               {items[i].username}
             </Text>
             <Text style={styles.unColor}>
-              {(items[i].partment||'') + (items[i].tag||'')}
+              {(items[i].partment||'') + '部－' + (items[i].tag||'') + '人员'}
             </Text>
           </View>
           <View style={{flex:1}}>
