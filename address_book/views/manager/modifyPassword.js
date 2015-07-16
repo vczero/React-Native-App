@@ -1,5 +1,4 @@
 
-
 var React = require('react-native');
 var Util = require('./../util');
 
@@ -10,23 +9,26 @@ var {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  AlertIOS,
   } = React;
 
-var DeleteUser = React.createClass({
+var ModifyUser = React.createClass({
 
   render: function(){
     return (
       <ScrollView>
 
         <View style={{height:35, marginTop:30,}}>
-          <TextInput style={styles.input} password={true} placeholder="请输入用户的邮箱"/>
+          <TextInput style={styles.input} password={true} placeholder="原始密码"/>
+        </View>
+
+        <View style={{height:35,marginTop:5}}>
+          <TextInput style={styles.input} password={true} placeholder="新密码"/>
         </View>
 
         <View>
-          <TouchableOpacity onPress={this._deleteUser}>
+          <TouchableOpacity onPress={this._resetPassword}>
             <View style={styles.btn}>
-              <Text style={{color:'#FFF'}}>删除用户</Text>
+              <Text style={{color:'#FFF'}}>修改密码</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -34,11 +36,8 @@ var DeleteUser = React.createClass({
     );
   },
 
-  _deleteUser: function(){
-    AlertIOS.alert('提示', '确认删除该用户？', [
-      {text: '删除', onPress: () => console.log('Foo Pressed!')},
-      {text: '取消', onPress: ()=>null},
-    ]);
+  _resetPassword: function(){
+
   }
 
 });
@@ -68,5 +67,4 @@ var styles = StyleSheet.create({
 });
 
 
-
-module.exports = DeleteUser;
+module.exports = ModifyUser;

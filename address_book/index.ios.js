@@ -74,6 +74,16 @@ var Address =  React.createClass({
         });
       }
     });
+
+    var path = Service.host + Service.getMessage;
+    var that = this;
+    Util.post(path, {
+      key: Util.key
+    }, function(data){
+      that.setState({
+        data: data
+      });
+    });
   },
 
   _selectTab: function(tabName){
@@ -83,6 +93,10 @@ var Address =  React.createClass({
   },
 
   _addNavigator: function(component, title){
+    var data = null;
+    if(title === '公告'){
+      data = this.state.data;
+    }
     return <NavigatorIOS
       style={{flex:1}}
       barTintColor='#007AFF'
@@ -92,6 +106,9 @@ var Address =  React.createClass({
       initialRoute={{
           component: component,
           title: title,
+          passProps:{
+            data: data
+          }
         }}
       />;
   },

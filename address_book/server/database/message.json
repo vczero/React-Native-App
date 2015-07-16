@@ -2,21 +2,31 @@
   {
     "messageid": "1",
     "userid": "112222",
+    "username":"李响",
     "time": "2015-05-03",
-    "message": "在App Store 上查看关于A-partments 的评论"
+    "message": "etcd 是一个分布式一致性高可用的键值系统。 它被目前大部分容器集群管理系统（kubernetes、docker swarm、 coreos fleet、cloudfoundry diego等）采用来管理调度信息。本次演讲主要介绍etcd的基本架构以及遇到的问题。另外也将介绍etcd今后的发展。"
   },
 
   {
     "messageid": "2",
     "userid": "112222",
+    "username":"王冲",
     "time": "2015-05-03",
-    "message": "在App Store 上查看关于A-partments 的评论"
+    "message": "途牛旅游网作为国内最大的旅游信息类网站之一，而途牛的价格中心是其大数据计算分析业务的核心系统。现在，途牛价格中心全新的实时计算架构通过应用分布式数据库SequoiaDB作为底层数据存储，再结合其他技术和架构，实现了系统整体效率2倍以上的提升。本次的分享就将由途牛旅游网的高级工程师王冲，介绍途牛旅游网的价格中心的实时计算架构以及如何结合SequoiaDB提升途牛价格中心的实时计算的效率。"
   },
 
   {
     "messageid": "3",
     "userid": "112222",
     "time": "2015-05-03",
-    "message": "在App Store 上查看关于A-partments 的评论"
+    "username":"陈伟才",
+    "message": "阿里云ECS是阿里云计算的核心产品之一，存储IO性能则关系到虚拟机之内应用程序的性能。在过去一年，我们在虚拟机IO全链路profile、多场景下存储产品的解决方案等方面进行持续优化，IO性能和可预期都取得明显的收益。"
+  },
+  {
+    "messageid": "4",
+    "userid": "112222",
+    "time": "2015-05-03",
+    "username":"图拉鼎 ",
+    "message": "苹果发布了 Swift 2.0 ，并宣布即将开源 Swift （详情）。本主题将向您介绍 Swift 2.0 的新特性，当前 Swift 语言的发展状况及未来展望。"
   }
 ]

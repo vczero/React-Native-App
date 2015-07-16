@@ -1,8 +1,7 @@
-/**
- * Created by lihua on 15/7/13.
- */
+
 var React = require('react-native');
 var Util = require('../util');
+var Service = require('../service');
 
 var {
   View,
@@ -15,10 +14,10 @@ var {
 var Item = React.createClass({
   render: function(){
     return (
-      <TouchableOpacity onPress={this.loadPage}>
+      <TouchableOpacity onPress={this.loadPage.bind(this, this.props.data)}>
         <View style={styles.item}>
           <View style={styles.width55}>
-            <Image style={styles.img} source={{uri: this.props.pic}}/>
+            <Text style={{color:'#fff', fontSize:18,fontWeight:'bold'}}>{this.props.name.substr(0,1)}</Text>
           </View>
           <View style={{flexDirection:'column',flex:1}}>
             <Text numberOfLines={2} style={styles.text}>
@@ -35,14 +34,16 @@ var Item = React.createClass({
       </TouchableOpacity>
     );
   },
-  loadPage: function(){
+  loadPage: function(data){
+    var content = data;
     this.props.nav.push({
       title:'消息详情',
       component: this.props.component,
       passProps:{
-        content:'id:xxxxidinddjhhfjjdjsgsggsss'
+        content: content
       }
     });
+
   }
 });
 
@@ -62,7 +63,14 @@ var styles = StyleSheet.create({
     borderRadius:4,
   },
   width55:{
-    width:55
+    width:50,
+    height:50,
+    borderRadius:4,
+    marginLeft:10,
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor: '#05C147',
+    marginRight:10,
   },
   text:{
     flex:1,

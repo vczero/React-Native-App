@@ -2,7 +2,7 @@
 var React = require('react-native');
 var Util = require('./util');
 var AddUser = require('./manager/addUser');
-var ModifyUser = require('./manager/modifyUser');
+var ModifyPassword = require('./manager/modifyPassword');
 var DeleteUser = require('./manager/deleteUser');
 var PostMessage = require('./manager/postMessage');
 
@@ -21,12 +21,12 @@ var Manager = React.createClass({
   render: function(){
     var colors = ['#F4000B', '#17B4FF', '#FFD900', '#F00000'];
     var tags = ['U', 'A', 'D', 'M'];
-    var items = ['修改个人信息', '增加联系人', '删除联系人',  '发布公告'];
-    var components = [ModifyUser, AddUser, DeleteUser, PostMessage];
+    var items = ['修改密码', '增加联系人', '删除联系人',  '发布公告'];
+    var components = [ModifyPassword, AddUser, DeleteUser, PostMessage];
     var JSXDOM = [];
     for(var i in items){
       JSXDOM.push(
-        <TouchableOpacity onPress={this._loadPage.bind(this, components[i])}>
+        <TouchableOpacity onPress={this._loadPage.bind(this, components[i], items[i])}>
           <View style={[styles.item, {flexDirection:'row'}]}>
             <Text style={[styles.tag, {color: colors[i]}]}>{tags[i]}</Text>
             <Text style={[styles.font,{flex:1}]}>{items[i]}</Text>
@@ -54,9 +54,9 @@ var Manager = React.createClass({
     );
   },
 
-  _loadPage: function(component){
+  _loadPage: function(component, title){
     this.props.navigator.push({
-      title: '增加联系人',
+      title: title,
       component: component
     });
   },
