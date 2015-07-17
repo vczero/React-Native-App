@@ -11,7 +11,7 @@ var User = {
     app.post('/user/create', this.addUser);
     app.post('/user/login', this.login);
     app.post('/user/login/token', this.loginByToken);
-    app.get('/user/password/update', this.updatePassword);
+    app.post('/user/password/update', this.updatePassword);
     app.get('/user/delete', this.deleteUser);
   },
 
@@ -83,7 +83,8 @@ var User = {
         "email": email,
         "tag": tag,
         "creater": creater,
-        "time": new Date()
+        "time": new Date(),
+        "token": ''
       };
       content.push(obj);
       //更新文件
@@ -107,14 +108,14 @@ var User = {
     var email = req.param('email');
     var password = util.md5(req.param('password'));
     var deviceId = req.param('deviceId');
-
-    var content = JSON.parse(fs.readFileSync(USER_PATH));
+    var token = util.guid() + deviceId;
+    var content = JSON.parse(fs.readFileSync(USER_PATH).toString());
     for(var i in content){
       //验证通过
       if(content[i].email === email && content[i].password === password){
-        var token = util.guid() + deviceId;
-        content[i].token = token;
+        content[i]['token'] = token;
         //写入到文件中
+        console.log(content[i]);
         fs.writeFileSync(USER_PATH, JSON.stringify(content));
         //删除密码
         delete content[i].password;
@@ -155,11 +156,17 @@ var User = {
   //用户修改密码
   updatePassword: function(req, res){
     var token = req.param('token');
+    var oldPassword = util.md5(req.param('oldPassword'));
     var password = util.md5(req.param('password'));
-    var content = JSON.parse(fs.readFileSync(USER_PATH));
 
+    console.log(req.param('oldPassword'));
+    console.log(req.param('password'));
+    console.log(oldPassword);
+    console.log(password);
+
+    var content = JSON.parse(fs.readFileSync(USER_PATH));
     for(var i in content){
-      if(token === content[i].token){
+      if(token === content[i].token && oldPassword === content[i].password){
         content[i].password = password;
         //写入到文件中
         fs.writeFileSync(USER_PATH, JSON.stringify(content));
@@ -172,7 +179,7 @@ var User = {
 
     return res.send({
       status: 0,
-      err: '更新失败，没有找到该用户'
+      data: '更新失败，没有找到该用户或者初始密码错误'
     });
   },
 

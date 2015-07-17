@@ -1,6 +1,7 @@
 
 var React = require('react-native');
 var Util = require('./../util');
+var Service = require('../service');
 
 var {
   View,
@@ -9,6 +10,8 @@ var {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  AlertIOS,
+  AsyncStorage,
   } = React;
 
 var ModifyUser = React.createClass({
@@ -18,11 +21,11 @@ var ModifyUser = React.createClass({
       <ScrollView>
 
         <View style={{height:35, marginTop:30,}}>
-          <TextInput style={styles.input} password={true} placeholder="原始密码"/>
+          <TextInput style={styles.input} password={true} placeholder="原始密码" onChangeText={this._getOldPassword}/>
         </View>
 
         <View style={{height:35,marginTop:5}}>
-          <TextInput style={styles.input} password={true} placeholder="新密码"/>
+          <TextInput style={styles.input} password={true} placeholder="新密码" onChangeText={this._getNewPassword}/>
         </View>
 
         <View>
@@ -36,7 +39,40 @@ var ModifyUser = React.createClass({
     );
   },
 
+  _getOldPassword: function(val){
+    this.setState({
+      oldPassword: val
+    });
+  },
+
+  _getNewPassword: function(val){
+    this.setState({
+      password: val
+    });
+  },
+
   _resetPassword: function(){
+    var path = Service.host + Service.updatePassword;
+    var that = this;
+    console.log(that.state.password);
+    //需要服务端确认login token
+    AsyncStorage.getItem('token', function(err, data){
+      if(!err){
+        Util.post(path, {
+          password: that.state.password,
+          oldPassword: that.state.oldPassword,
+          token: data,
+        }, function(data){
+          if(data.status){
+            AlertIOS.alert('成功', data.data);
+          }else{
+            AlertIOS.alert('失败', data.data);
+          }
+        });
+      }else{
+        AlertIOS.alert('失败', data.data);
+      }
+    });
 
   }
 

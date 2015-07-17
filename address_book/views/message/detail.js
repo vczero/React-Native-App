@@ -1,6 +1,4 @@
-/**
- * Created by lihua on 15/7/13.
- */
+
 
 var React = require('react-native');
 var {
