@@ -2,7 +2,7 @@
 
 React-Native实战Simple App      
 
-##一、基于React-Native & Node通讯录App
+###一、基于React-Native & Node通讯录App
 主要完成的功能有：
 
 + 基于文件系统的Node.js服务端;
@@ -31,7 +31,9 @@ React-Native实战Simple App
     <img src="pic/address_book/webview.png">
 </div>
 
-
+####Tip:
+    (1)为了演示，代码有些粗糙；
+    (2)服务端也不是很完善，为了方便快速搭建，使用的是基于node的文件服务。
 TODO:       
 
 + 基于第三方数据构建美食App
