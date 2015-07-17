@@ -12,7 +12,7 @@ var User = {
     app.post('/user/login', this.login);
     app.post('/user/login/token', this.loginByToken);
     app.post('/user/password/update', this.updatePassword);
-    app.get('/user/delete', this.deleteUser);
+    app.post('/user/delete', this.deleteUser);
   },
 
   //获取用户信息
@@ -191,14 +191,12 @@ var User = {
     var content = JSON.parse(fs.readFileSync(USER_PATH));
     for (var i in content) {
       if (token === content[i].token) {
-
         //遍历查找需要删除的用户
         for (var j in content) {
           if (content[j].email === email) {
             content.splice(j, 1);
             //写入到文件中
             fs.writeFileSync(USER_PATH, JSON.stringify(content));
-            console.log(content);
             return res.send({
               status: 1,
               info: content,

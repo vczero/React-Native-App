@@ -2,6 +2,7 @@
 
 var React = require('react-native');
 var Util = require('./../util');
+var Service = require('../service');
 
 var {
   View,
@@ -11,6 +12,7 @@ var {
   TouchableOpacity,
   TextInput,
   AlertIOS,
+  AsyncStorage,
   } = React;
 
 var DeleteUser = React.createClass({
@@ -20,7 +22,7 @@ var DeleteUser = React.createClass({
       <ScrollView>
 
         <View style={{height:35, marginTop:30,}}>
-          <TextInput style={styles.input} password={true} placeholder="请输入用户的邮箱"/>
+          <TextInput style={styles.input}  placeholder="请输入用户的邮箱" onChangeText={this._getEmail}/>
         </View>
 
         <View>
@@ -34,9 +36,35 @@ var DeleteUser = React.createClass({
     );
   },
 
+  _getEmail: function(val){
+    this.setState({
+      email: val
+    });
+  },
+
   _deleteUser: function(){
+    var that = this;
     AlertIOS.alert('提示', '确认删除该用户？', [
-      {text: '删除', onPress: () => console.log('Foo Pressed!')},
+      {text: '删除', onPress: function(){
+        var path = Service.host + Service.deleteUser;
+        AsyncStorage.getItem('token', function(err, data){
+          if(!err){
+            Util.post(path,{
+              token: data,
+              email: that.state.email
+            }, function(data){
+              if(data.status){
+                AlertIOS.alert('成功', '删除成功');
+              }else{
+                AlertIOS.alert('失败', '删除失败');
+              }
+            });
+          }else{
+            AlertIOS.alert('提示', '没有权限');
+          }
+        });
+        }
+      },
       {text: '取消', onPress: ()=>null},
     ]);
   }
