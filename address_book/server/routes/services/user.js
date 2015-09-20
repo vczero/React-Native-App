@@ -65,7 +65,7 @@ var User = {
     var tag = req.param('tag');
     var creater = req.param('creater') || '';
 
-    if(!username || !password || !tel || !email || !partment || !tag){
+    if(!username || !password || !tel || !email || !partment || !tag || !creater){
       return res.send({
         status: 0,
         data: '缺少必要参数'
@@ -103,7 +103,6 @@ var User = {
   },
 
   //用户登录
-  //方便大会用户，开启白名单（但是不能修改密码、不能删除、更新其他用户信息；可增加用户）
   login: function(req, res){
     var email = req.param('email');
     var password = util.md5(req.param('password'));
@@ -158,11 +157,6 @@ var User = {
     var token = req.param('token');
     var oldPassword = util.md5(req.param('oldPassword'));
     var password = util.md5(req.param('password'));
-
-    console.log(req.param('oldPassword'));
-    console.log(req.param('password'));
-    console.log(oldPassword);
-    console.log(password);
 
     var content = JSON.parse(fs.readFileSync(USER_PATH));
     for(var i in content){
