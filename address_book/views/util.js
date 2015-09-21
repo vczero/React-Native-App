@@ -2,18 +2,14 @@
 
 var React = require('react-native');
 var Dimensions = require('Dimensions');
-//var KeyboardEvents = require('react-native-keyboardevents');
-//var KeyboardEventEmitter = KeyboardEvents.Emitter;
-
 
 var {
   PixelRatio
 } = React;
 
-
 var Util = {
 
-  //单位像素比
+  //单位像素
   pixel: 1 / PixelRatio.get(),
   //屏幕尺寸
   size: {
@@ -42,7 +38,5 @@ var Util = {
   key: 'HSHHSGSGGSTWSYWSYUSUWSHWBS-REACT-NATIVE'
 
 };
-
-
 
 module.exports = Util;

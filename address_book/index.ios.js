@@ -26,7 +26,6 @@ var {
 } = React;
 
 
-
 StatusBarIOS.setStyle('light-content');
 var Address =  React.createClass({
   statics: {
@@ -45,7 +44,7 @@ var Address =  React.createClass({
         flex:1,
         opacity:1
       },
-      isLoadingShow: false,
+      isLoadingShow: false
     };
   },
 
@@ -71,6 +70,18 @@ var Address =  React.createClass({
               isLoadingShow: false
             });
           }
+        });
+      }else{
+        that.setState({
+          showIndex: {
+            height:0,
+            opacity:0
+          },
+          showLogin:{
+            flex:1,
+            opacity:1
+          },
+          isLoadingShow: false
         });
       }
     });
@@ -312,8 +323,5 @@ var styles = StyleSheet.create({
     borderRadius: 4,
   }
 });
-
-
-
 
 AppRegistry.registerComponent('address_book', () => Address);

@@ -9,5 +9,4 @@ var Service = {
   deleteUser: '/user/delete'
 };
 
-
 module.exports = Service;
