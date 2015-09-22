@@ -73,7 +73,6 @@ var ModifyUser = React.createClass({
         AlertIOS.alert('失败', data.data);
       }
     });
-
   }
 
 });
@@ -101,6 +100,5 @@ var styles = StyleSheet.create({
     borderRadius:4,
   }
 });
-
 
 module.exports = ModifyUser;

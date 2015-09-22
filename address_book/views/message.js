@@ -18,32 +18,18 @@ var {
   TouchableOpacity,
 } = React;
 
-
 var Message = React.createClass({
   render: function(){
     var contents = [];
     var items = [];
-    var height = Util.size.height - 50 - 114;
-    var urls = [];
-    var word = '春眠不觉晓，知了处处叫';
-    var component = '';
-
     if(this.props.data.status){
       contents = this.props.data.data;
     }
-
-    urls.push('https://avatars3.githubusercontent.com/u/6133685?v=3&s=50');
-    urls.push('http://img1.gtimg.com/13/1309/130992/13099292_200x200_0.jpg');
-    urls.push('http://tp1.sinaimg.cn/5396425536/180/5718431393/0');
-    urls.push('http://tp2.sinaimg.cn/1904769205/180/5728293682/1');
-
     for(var i = 0; i < contents.length; i++){
-      var pic = urls[parseInt(Math.random()*4)];
       items.push(
         <Item
           data={contents[i]}
           nav={this.props.navigator}
-          pic={pic}
           component={Detail}
           text={contents[i].message}
           name={contents[i].username}
@@ -58,6 +44,7 @@ var Message = React.createClass({
         </View>
         <View style={{backgroundColor:'#fff', borderTopWidth:1, borderTopColor:'#ddd'}}>
           {items}
+          <View style={{height:35}}></View>
         </View>
       </ScrollView>
     );
@@ -80,6 +67,5 @@ var styles = StyleSheet.create({
     backgroundColor:'#fff',
   }
 });
-
 
 module.exports = Message;

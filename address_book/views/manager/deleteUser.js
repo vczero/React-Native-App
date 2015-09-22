@@ -95,6 +95,4 @@ var styles = StyleSheet.create({
   }
 });
 
-
-
 module.exports = DeleteUser;

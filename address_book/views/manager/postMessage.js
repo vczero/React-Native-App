@@ -1,5 +1,6 @@
 
 var React = require('react-native');
+var Service = require('./../service');
 var Util = require('./../util');
 
 var {
@@ -10,6 +11,7 @@ var {
   TouchableOpacity,
   Image,
   Text,
+  AsyncStorage
   } = React;
 
 var PostMessage = React.createClass({
@@ -18,10 +20,13 @@ var PostMessage = React.createClass({
     return (
       <ScrollView >
         <View>
-          <TextInput multiline={true} style={styles.textinput} placeholder="请输入公告内容"/>
+          <TextInput multiline={true}
+                     onChangeText={this._onChange}
+                     style={styles.textinput}
+                     placeholder="请输入公告内容"/>
         </View>
         <View style={{marginTop:20}}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this._postMessage}>
             <View style={styles.btn}>
               <Text style={{color:'#fff'}}>发布公告</Text>
             </View>
@@ -31,8 +36,33 @@ var PostMessage = React.createClass({
     );
   },
 
-  _postMessage: function(){
+  _onChange: function(val){
+    if(val){
+      this.setState({
+        message: val
+      });
+    }
+  },
 
+  _postMessage: function(){
+    var that = this;
+    AsyncStorage.getItem('token', function(err, token){
+      if(err){
+        alert('权限失效，请退出APP，重新登录');
+      }else{
+        Util.post(Service.host + Service.addMessage, {
+          token: token,
+          message: that.state.message
+        }, function(data){
+          if(data.status){
+            alert('添加成功！');
+          }else{
+            alert('添加失败！');
+          }
+        });
+      }
+
+    });
   }
 
 });
@@ -61,6 +91,5 @@ var styles = StyleSheet.create({
     borderRadius:4,
   }
 });
-
 
 module.exports = PostMessage;

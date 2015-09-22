@@ -29,7 +29,9 @@ var Address = React.createClass({
       view.push(
         <View style={styles.row}>
           <View style={[styles.text, color]}>
-            <Text style={{fontSize:25, color:'#fff', fontWeight:'bold'}}>{items[i].username.substr(0, 1) || '未'}</Text>
+            <Text style={{fontSize:25, color:'#fff', fontWeight:'bold'}}>
+              {items[i].username.substr(0, 1) || '未'}
+            </Text>
           </View>
           <View style={styles.part}>
             <Text>
@@ -40,12 +42,14 @@ var Address = React.createClass({
             </Text>
           </View>
           <View style={{flex:1}}>
-            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet.bind(this, items[i].tel, items[i].email, items[i].username)}>
+            <TouchableHighlight underlayColor="#fff"
+              onPress={this.showActionSheet.bind(this, items[i].tel, items[i].email, items[i].username)}>
               <Text style={styles.link}>
                 {items[i].tel}
               </Text>
             </TouchableHighlight>
-            <TouchableHighlight underlayColor="#fff" onPress={this.showActionSheet.bind(this, items[i].tel, items[i].email, items[i].username)}>
+            <TouchableHighlight underlayColor="#fff"
+              onPress={this.showActionSheet.bind(this, items[i].tel, items[i].email, items[i].username)}>
               <Text style={styles.link}>
                 {items[i].email}
               </Text>
@@ -122,6 +126,5 @@ var styles = StyleSheet.create({
     fontSize:12,
   }
 });
-
 
 module.exports = Address;

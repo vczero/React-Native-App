@@ -5,6 +5,7 @@ var Service = {
   getUser: '/user/get',
   createUser: '/user/create',
   getMessage: '/message/get',
+  addMessage: '/message/add',
   updatePassword: '/user/password/update',
   deleteUser: '/user/delete'
 };

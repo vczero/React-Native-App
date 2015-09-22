@@ -6,7 +6,7 @@ var USER_PATH = './database/user.json';
 var Message = {
   init: function(app){
     app.post('/message/get', this.getMessage);
-    app.get('/message/add', this.addMessage);
+    app.post('/message/add', this.addMessage);
   },
 
   //获取公告消息

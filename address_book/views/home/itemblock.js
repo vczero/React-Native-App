@@ -1,7 +1,6 @@
 
 var React = require('react-native');
 var Address = require('./address');
-
 var Service = require('./../service');
 var Util = require('../util');
 
@@ -11,7 +10,6 @@ var {
   StyleSheet,
   TouchableHighlight,
 } = React;
-
 
 //每个单项组件
 var ItemBlock = React.createClass({

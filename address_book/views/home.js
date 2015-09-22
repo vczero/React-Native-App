@@ -14,7 +14,6 @@ var {
   TouchableHighlight,
 } = React;
 
-
 var Home = React.createClass({
   getInitialState: function(){
     //减去paddingLeft && paddingRight && space
@@ -111,7 +110,5 @@ var styles = StyleSheet.create({
     marginBottom:20,
   }
 });
-
-
 
 module.exports = Home;
