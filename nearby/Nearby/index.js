@@ -43,7 +43,8 @@ var Nearby = React.createClass({
               style={styles.container}
               initialRoute={{
                 component: Food,
-                title: '美食'
+                title: '美食',
+                rightButtonTitle:'地图',
               }}
               />
           </TabBarIOS.Item>
@@ -60,7 +61,8 @@ var Nearby = React.createClass({
               tintColor="#fff"
               initialRoute={{
                 component: Film,
-                title: '电影'
+                title: '电影',
+                rightButtonTitle:'地图',
               }}
               />
           </TabBarIOS.Item>
@@ -77,16 +79,17 @@ var Nearby = React.createClass({
               tintColor="#fff"
               initialRoute={{
                 component: Bank,
-                title: '银行'
+                title: '银行',
+                rightButtonTitle:'地图',
               }}
               />
           </TabBarIOS.Item>
 
           <TabBarIOS.Item
-            title='厕所'
-            selected={this.state.selected === '厕所'}
+            title='卫生间'
+            selected={this.state.selected === '卫生间'}
             icon={require("image!toilet")}
-            onPress={()=>{this.setState({selected: '厕所'})}}>
+            onPress={()=>{this.setState({selected: '卫生间'})}}>
             <NavigatorIOS
               style={styles.container}
               barTintColor='#007AFF'
@@ -94,7 +97,9 @@ var Nearby = React.createClass({
               tintColor="#fff"
               initialRoute={{
                 component: Toilet,
-                title: '厕所'
+                title: '卫生间',
+                rightButtonTitle:'地图',
+                onRightButtonPress: function(){alert(0)}
               }}
               />
           </TabBarIOS.Item>

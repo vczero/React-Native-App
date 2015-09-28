@@ -1,16 +1,14 @@
+
 var React = require('react-native');
-
-var {
-  View
-  } = React;
-
+var List = require('./list');
 var Toilet = React.createClass({
   render: function(){
-    return (
-      <View></View>
+    return(
+      <List type="卫生间" nav={this.props.navigator}/>
     );
   }
 });
+
 
 module.exports = Toilet;
 
