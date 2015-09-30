@@ -52,25 +52,10 @@ React-Native实战Simple App
 + 附近的搜索功能：美食、银行、电影院、卫生间
 + 地图功能：展示附近的结果列表
 效果如下图所示：
-<div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_1_1.png">
-    <img src="pic/nearby/nearby_1_2.png">
-</div>
-
-<div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_2_1.png">
-    <img src="pic/nearby/nearby_2_2.png">
-</div>
-
-<div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_3_1.png">
-    <img src="pic/nearby/nearby_3_2.png">
-</div>
-
-<div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_4_1.png">
-    <img src="pic/nearby/nearby_4_2.png">
-</div>
+![](pic/nearby/1.png)       
+![](pic/nearby/2.png)       
+![](pic/nearby/3.png)       
+![](pic/nearby/4.png)       
 
 ####（2）安装启动程序
 
