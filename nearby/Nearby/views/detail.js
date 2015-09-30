@@ -23,10 +23,6 @@ var FoodDetail = React.createClass({
         {this.state.data?
         <View style={styles.content}>
           <Text style={styles.name}>{this.state.data.name}</Text>
-          <Text style={styles.tag}>
-            菜品：
-            {this.state.data.tag}
-          </Text>
           <Text style={styles.types}>
             类型：
             {this.state.data.type}
@@ -34,6 +30,10 @@ var FoodDetail = React.createClass({
           <Text style={styles.address}>
             地址：
             {this.state.data.address}
+          </Text>
+          <Text style={styles.tag}>
+            标签：
+            {this.state.data.tag}
           </Text>
           <Text style={styles.server}>
             服务：

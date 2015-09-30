@@ -24,5 +24,7 @@ project.xcworkspace
 
 # node.js
 #
+
+nearby/Info.plist
 node_modules/
 npm-debug.log

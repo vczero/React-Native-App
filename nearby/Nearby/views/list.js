@@ -1,4 +1,5 @@
 var React = require('react-native');
+var Geolocation = require('Geolocation');
 var Util = require('./util');
 var Detail = require('./detail');
 
@@ -11,7 +12,9 @@ var {
   ActivityIndicatorIOS,
   TouchableOpacity,
   LinkingIOS,
-  ActionSheetIOS
+  ActionSheetIOS,
+  WebView,
+  AsyncStorage
 } = React;
 
 var List = React.createClass({
@@ -54,10 +57,11 @@ var List = React.createClass({
         );
       }
     }
+    var placeholder = '搜索' + this.props.type;
     return (
       <ScrollView style={styles.container}>
         <View style={styles.searchBg}>
-          <TextInput style={styles.input} placeholder="搜索美食"
+          <TextInput style={styles.input} placeholder={placeholder}
              onChangeText={this._onChangeText}
              onEndEditing={this._onEndEditing}/>
           <View>
@@ -75,12 +79,30 @@ var List = React.createClass({
     );
   },
   componentDidMount: function(){
-    var url = Util.searchURL + 'key=' + Util.amapKey + '&keywords='
-      + this.props.type + '&location=121.390686,31.213976&extensions=base';
+    var that = this;
+    Geolocation.getCurrentPosition(function(data){
+      var lnglat = data.coords.longitude + ',' + data.coords.latitude;
+      AsyncStorage.setItem('pos', lnglat);
+      var url = Util.searchURL + 'key=' + Util.amapKey + '&keywords='
+        + that.props.type + '&extensions=base';
+      if(_GEO_OPEN){
+        url += '&location=' + lnglat;
+        that._doGetData(url);
+      }else{
+        url += '&location=' + _GEO_TEST_POS;
+        that._doGetData(url);
+      }
+    }, function(err){
+      alert('定位失败，请重新开启应用定位');
+    });
+  },
+
+  _doGetData: function(url){
     var that = this;
     Util.getJSON(url, function(data){
       if(data.status && data.info === 'OK'){
         var count = data.pois.length > 10? 10: data.pois.length;
+        that._addStorage(data);
         that.setState({
           list: data.pois,
           count: count
@@ -110,25 +132,35 @@ var List = React.createClass({
   _onEndEditing: function(){
     var that = this;
     var keywords = this.state.keywords;
-
     var url = Util.searchURL + 'key=' + Util.amapKey + '&keywords='
-      + keywords + '&types=' + that.props.type
-      + '&location=121.390686,31.213976&extensions=base';
-    console.log(url);
+      + keywords + '&types=' + that.props.type + '&extensions=base';
     that.setState({
       list: null
     });
-    Util.getJSON(url, function(data){
-      if(data.status && data.info === 'OK' && data.pois.length){
-        var count = data.pois.length > 10? 10: data.pois.length;
-        that.setState({
-          list: data.pois,
-          count: count
-        });
+    AsyncStorage.getItem('pos', function(err, result){
+      if(_GEO_OPEN){
+        if(!err){
+          url += '&location=' + result;
+          that._doGetData(url);
+        }else{
+          alert('定位失败');
+        }
       }else{
-        alert('没有查询到相应的数据');
+        url += '&location=' + _GEO_TEST_POS;
+        that._doGetData(url);
       }
     });
+  },
+
+  //添加到本地存储
+  _addStorage: function(data){
+    var posArr = [];
+    var len = data.pois.length > 10? 10: data.pois.length;
+    for(var i = 0; i < len; i++){
+      posArr.push(data.pois[i].location);
+    }
+    var posStr = posArr.join(',');
+    AsyncStorage.setItem('_'  + this.props.type , posStr);
   },
 
   //拨打电话

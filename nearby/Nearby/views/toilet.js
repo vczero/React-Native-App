@@ -4,7 +4,7 @@ var List = require('./list');
 var Toilet = React.createClass({
   render: function(){
     return(
-      <List type="卫生间" nav={this.props.navigator}/>
+      <List type="厕所" nav={this.props.navigator}/>
     );
   }
 });
