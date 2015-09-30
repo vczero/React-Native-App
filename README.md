@@ -53,23 +53,23 @@ React-Native实战Simple App
 + 地图功能：展示附近的结果列表
 效果如下图所示：
 <div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_1.png">
-    <img src="pic/nearby/nearby_2.png">
+    <img src="pic/nearby/nearby_1_1.png">
+    <img src="pic/nearby/nearby_1_2.png">
 </div>
 
 <div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_3.png">
-    <img src="pic/nearby/nearby_4.png">
+    <img src="pic/nearby/nearby_2_1.png">
+    <img src="pic/nearby/nearby_2_2.png">
 </div>
 
 <div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_5.png">
-    <img src="pic/nearby/nearby_6.png">
+    <img src="pic/nearby/nearby_3_1.png">
+    <img src="pic/nearby/nearby_3_2.png">
 </div>
 
 <div style="text-align:center; min-height:100px;width:100%;">
-    <img src="pic/nearby/nearby_7.png">
-    <img src="pic/nearby/nearby_8.png">
+    <img src="pic/nearby/nearby_4_1.png">
+    <img src="pic/nearby/nearby_4_2.png">
 </div>
 
 ####（2）安装启动程序
