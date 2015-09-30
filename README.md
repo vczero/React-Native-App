@@ -17,17 +17,17 @@ React-Native实战Simple App
     <img src="pic/address_book/联系人列表.png">
 </div>
 
-<div style="text-align:center">
+<div style="text-align:center; min-height:100px;width:100%;">
     <img src="pic/address_book/公告.png">
     <img src="pic/address_book/公告详情.png">
 </div>
 
-<div style="text-align:center">
+<div style="text-align:center; min-height:100px;width:100%;">
     <img src="pic/address_book/管理页.png">
     <img src="pic/address_book/添加用户.png">
 </div>
 
-<div style="text-align:center">
+<div style="text-align:center; min-height:100px;width:100%;">
     <img src="pic/address_book/webview.png">
 </div>
 
@@ -41,10 +41,51 @@ React-Native实战Simple App
     (1)为了演示，代码有些粗糙；     
     (2)服务端也不是很完善，为了方便快速搭建，使用的是基于node的文件服务。
     (3)oschina会同步更新改项目：https://git.oschina.net/vczero/React-Native-App
-    (4)相关入门教程：https://github.com/vczero/react-native-lession
+    (4)相关入门教程：https://github.com/vczero/react-native-lession       
+
+
+
+###二、基于LBS的App：附近
+####（1）主要完成的功能有：
+
++ 附近的美食、附近的银行、附近的电影院、附近的卫生间;
++ 附近的搜索功能：美食、银行、电影院、卫生间
++ 地图功能：展示附近的结果列表
+效果如下图所示：
+<div style="text-align:center; min-height:100px;width:100%;">
+    <img src="pic/nearby/nearby_1.png">
+    <img src="pic/nearby/nearby_2.png">
+</div>
+
+<div style="text-align:center; min-height:100px;width:100%;">
+    <img src="pic/nearby/nearby_3.png">
+    <img src="pic/nearby/nearby_4.png">
+</div>
+
+<div style="text-align:center; min-height:100px;width:100%;">
+    <img src="pic/nearby/nearby_5.png">
+    <img src="pic/nearby/nearby_6.png">
+</div>
+
+<div style="text-align:center; min-height:100px;width:100%;">
+    <img src="pic/nearby/nearby_7.png">
+    <img src="pic/nearby/nearby_8.png">
+</div>
+
+####（2）安装启动程序
+
++ 如果是模拟器，则使用模拟位置，修改nearby/Nearby/index.js文件中         
+        
+        //是否开启真实的定位；如果开启了_GEO_OPEN，_GEO_TEST_POS则会失效
+        _GEO_OPEN = false;
+
++ 如果是真机环境则修改nearby/Nearby/index.js文件中        
+
+        //是否开启真实的定位；如果开启了_GEO_OPEN，_GEO_TEST_POS则会失效
+        _GEO_OPEN = true;
+    
 TODO:            
 
-+ 基于第三方数据构建美食App
 + 基于LBS的App
 
 
