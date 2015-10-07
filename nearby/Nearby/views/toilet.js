@@ -9,6 +9,5 @@ var Toilet = React.createClass({
   }
 });
 
-
 module.exports = Toilet;
 

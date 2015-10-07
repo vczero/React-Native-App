@@ -6,7 +6,6 @@ var {
   } = React;
 
 var Util = {
-
   //单位像素
   pixel: 1 / PixelRatio.get(),
   //屏幕尺寸
@@ -47,7 +46,6 @@ var Util = {
   searchURL: 'http://restapi.amap.com/v3/place/around?',
 
   detailURL: 'http://restapi.amap.com/v3/place/detail?'
-
 };
 
 module.exports = Util;
