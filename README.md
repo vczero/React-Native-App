@@ -33,7 +33,7 @@ React-Native实战Simple App
 
 ####（2）安装启动程序
     (1)首先进入address_book目录安装node module；命令行：$ npm install 
-    (2)其次cd server，启动node数据接口服务，命令行： $ node app.js
+    (2)其次cd server，命令行：$ npm install；然后启动node数据接口服务，命令行： $ node app.js
     (3)初次登录用户名:test@126.com    密码：123
 
 
