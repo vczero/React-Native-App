@@ -34,7 +34,7 @@ var Map = React.createClass({
         if(_GEO_OPEN){
           url += 'pos=' + pos + '&markers=' + markers;
         }else{
-          url += 'pos=' + _GEO_TEST_POS + '6&markers=' + markers;
+          url += 'pos=' + _GEO_TEST_POS + '&markers=' + markers;
         }
         that.setState({
           url: url
@@ -45,6 +45,5 @@ var Map = React.createClass({
     });
   }
 });
-
 
 module.exports = Map;

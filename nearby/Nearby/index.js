@@ -16,8 +16,9 @@ var {
   TabBarIOS
   } = React;
 
+
 //是否开启真实的定位；如果开启了_GEO_OPEN，_GEO_TEST_POS则会失效
-_GEO_OPEN = true;
+_GEO_OPEN = false;
 //模拟定位数据
 _GEO_TEST_POS = '121.390686,31.213976';
 

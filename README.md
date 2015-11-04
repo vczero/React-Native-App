@@ -69,9 +69,14 @@ React-Native实战Simple App
         //是否开启真实的定位；如果开启了_GEO_OPEN，_GEO_TEST_POS则会失效
         _GEO_OPEN = true;
     
-TODO:            
+           
++ 三、基于 React-Native & 豆瓣Open API 开发搜索APP        
+地址：https://github.com/vczero/React-Dou           
 
-+ 基于LBS的App
+
++ 四、天黑了，请闭眼(简单游戏)        
+地址： https://github.com/vczero/closeEye             
+
 
 
 
