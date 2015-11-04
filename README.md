@@ -70,11 +70,11 @@ React-Native实战Simple App
         _GEO_OPEN = true;
     
            
-+ 三、基于 React-Native & 豆瓣Open API 开发搜索APP        
+### 三、基于 React-Native & 豆瓣Open API 开发搜索APP        
 地址：https://github.com/vczero/React-Dou           
 
 
-+ 四、天黑了，请闭眼(简单游戏)        
+### 四、天黑了，请闭眼(简单游戏)        
 地址： https://github.com/vczero/closeEye             
 
 
