@@ -26,7 +26,7 @@ var Manager = React.createClass({
     var JSXDOM = [];
     for(var i in items){
       JSXDOM.push(
-        <TouchableOpacity onPress={this._loadPage.bind(this, components[i], items[i])}>
+        <TouchableOpacity key={items[i]} onPress={this._loadPage.bind(this, components[i], items[i])}>
           <View style={[styles.item, {flexDirection:'row'}]}>
             <Text style={[styles.tag, {color: colors[i]}]}>{tags[i]}</Text>
             <Text style={[styles.font,{flex:1}]}>{items[i]}</Text>
