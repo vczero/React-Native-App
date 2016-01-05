@@ -32,7 +32,7 @@ var List = React.createClass({
       for(var i = 0; i < len; i++){
         var obj = this.state.list[i];
         items.push(
-          <TouchableOpacity style={styles.item} onPress={this._loadDetail.bind(this, obj.id, obj.name)}>
+          <TouchableOpacity key={'listItem' + i} style={styles.item} onPress={this._loadDetail.bind(this, obj.id, obj.name)}>
             <View style={styles.row}>
               <View style={{flex:1}}>
                 <Text numberOfLines={1} style={styles.name}>{obj.name}</Text>
