@@ -27,7 +27,7 @@ var Address = React.createClass({
     };
     for(var i in items){
       view.push(
-        <View style={styles.row}>
+        <View key={'addressItem' + i} style={styles.row}>
           <View style={[styles.text, color]}>
             <Text style={{fontSize:25, color:'#fff', fontWeight:'bold'}}>
               {items[i].username.substr(0, 1) || '未'}

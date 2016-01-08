@@ -31,6 +31,7 @@ var Message = React.createClass({
           data={contents[i]}
           nav={this.props.navigator}
           component={Detail}
+          key={contents[i].messageid}
           text={contents[i].message}
           name={contents[i].username}
           date={contents[i].time}/>

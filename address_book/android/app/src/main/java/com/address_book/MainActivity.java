@@ -1,4 +1,4 @@
-package com.nearby;
+package com.address_book;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "nearby", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "address_book", null);
 
         setContentView(mReactRootView);
     }

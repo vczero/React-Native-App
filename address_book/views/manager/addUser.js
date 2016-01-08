@@ -45,7 +45,7 @@ var AddUser = React.createClass({
     var tagOne = [];
     for(var i = 0; i <3; i++){
       tagOne.push(
-        <TouchableOpacity onPress={this._select.bind(this, this.state.items[i])}>
+        <TouchableOpacity key={this.state.items[i]} onPress={this._select.bind(this, this.state.items[i])}>
           <View style={[styles.part, this.state['select' + this.state.items[i]]]}>
             <Text style={this.state['select_' + this.state.items[i]]}>{this.state.tags[i]}</Text>
           </View>
@@ -56,7 +56,7 @@ var AddUser = React.createClass({
     var tagTwo = [];
     for(var i = 3; i <6; i++){
       tagTwo.push(
-        <TouchableOpacity onPress={this._select.bind(this, this.state.items[i])}>
+        <TouchableOpacity key={this.state.items[i]} onPress={this._select.bind(this, this.state.items[i])}>
           <View style={[styles.part, this.state['select' + this.state.items[i]]]}>
             <Text style={this.state['select_' + this.state.items[i]]}>{this.state.tags[i]}</Text>
           </View>
