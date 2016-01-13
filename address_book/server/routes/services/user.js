@@ -65,7 +65,7 @@ var User = {
     var tag = req.param('tag');
     var creater = req.param('creater') || '';
 
-    if(!username || !password || !tel || !email || !partment || !tag || !creater){
+    if(!username || !password || !tel || !email || !partment || !tag){
       return res.send({
         status: 0,
         data: '缺少必要参数'
