@@ -59,7 +59,7 @@ var Address = React.createClass({
       );
     }
     return (
-      <ScrollView>
+      <ScrollView style={{marginBottom: 64}}>
         {view}
       </ScrollView>
     );

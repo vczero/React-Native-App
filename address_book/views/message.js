@@ -45,7 +45,6 @@ var Message = React.createClass({
         </View>
         <View style={{backgroundColor:'#fff', borderTopWidth:1, borderTopColor:'#ddd'}}>
           {items}
-          <View style={{height:35}}></View>
         </View>
       </ScrollView>
     );
@@ -57,7 +56,8 @@ var styles = StyleSheet.create({
   container:{
     flex:1,
     backgroundColor:'#F5F5F5',
-    flexDirection:'column'
+    flexDirection:'column',
+    marginBottom: 64
   },
   search:{
     height:35,

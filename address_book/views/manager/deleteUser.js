@@ -16,7 +16,11 @@ var {
   } = React;
 
 var DeleteUser = React.createClass({
-
+  getInitialState: function () {
+    return {
+      email: ''
+    }
+  },
   render: function(){
     return (
       <ScrollView>
@@ -44,29 +48,33 @@ var DeleteUser = React.createClass({
 
   _deleteUser: function(){
     var that = this;
-    AlertIOS.alert('提示', '确认删除该用户？', [
-      {text: '删除', onPress: function(){
-        var path = Service.host + Service.deleteUser;
-        AsyncStorage.getItem('token', function(err, data){
-          if(!err){
-            Util.post(path,{
-              token: data,
-              email: that.state.email
-            }, function(data){
-              if(data.status){
-                AlertIOS.alert('成功', '删除成功');
+    this.state.email == '' ?
+      AlertIOS.alert('提示', '请输入要删除的用户邮箱') :
+      AlertIOS.alert('提示', '确认删除该用户？', [
+        {
+          text: '删除',
+          onPress: function(){
+            var path = Service.host + Service.deleteUser;
+            AsyncStorage.getItem('token', function(err, data){
+              if(!err){
+                Util.post(path,{
+                  token: data,
+                  email: that.state.email
+                }, function(data){
+                  if(data.status){
+                    AlertIOS.alert('成功', '删除成功');
+                  }else{
+                    AlertIOS.alert('失败', '删除失败');
+                  }
+                });
               }else{
-                AlertIOS.alert('失败', '删除失败');
+                AlertIOS.alert('提示', '没有权限');
               }
             });
-          }else{
-            AlertIOS.alert('提示', '没有权限');
           }
-        });
-        }
-      },
-      {text: '取消', onPress: ()=>null},
-    ]);
+        },
+        {text: '取消', onPress: ()=>null},
+      ]);
   }
 
 });

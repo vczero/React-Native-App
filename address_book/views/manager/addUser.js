@@ -144,7 +144,6 @@ var AddUser = React.createClass({
     };
     this.setState(obj);
     this.setState(color);
-    this.setState();
     //清除其他选中效果
     delete items[id];
     for(var i in items){
