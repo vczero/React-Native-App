@@ -1,6 +1,10 @@
 # React-Native-App
 
-React-Native实战Simple App      
+React-Native实战Simple App           
+
+### 0. 已上线iOS App       
+仓库地址： https://github.com/vczero/toilet          
+**苹果App Store搜索 厕所在哪, 即可下载**          
 
 ###一、基于React-Native & Node通讯录App
 ####（1）主要完成的功能有：
