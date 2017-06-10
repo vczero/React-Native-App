@@ -9,7 +9,7 @@ React-Native实战Simple App
 **苹果App Store搜索 厕所在哪, 即可下载**          
 
 ### 一、基于React-Native & Node通讯录App
-####（1）主要完成的功能有：
+1.主要完成的功能有：
 
 + 基于文件系统的Node.js服务端;
 + 通讯录功能（分类页 ＋ 列表页 ＋ 拨号邮箱邮件）
@@ -37,13 +37,13 @@ React-Native实战Simple App
     <img src="pic/address_book/webview.png">
 </div>
 
-####（2）安装启动程序
+2.安装启动程序
     (1)首先进入address_book目录安装node module；命令行：$ npm install 
     (2)其次cd server，命令行：$ npm install；然后启动node数据接口服务，命令行： $ node app.js
     (3)初次登录用户名:test0@126.com    密码：123
 
 
-####（3）Tip:
+3.Tip:
     (1)为了演示，代码有些粗糙；     
     (2)服务端也不是很完善，为了方便快速搭建，使用的是基于node的文件服务。
     (3)oschina会同步更新改项目：https://git.oschina.net/vczero/React-Native-App
@@ -52,7 +52,7 @@ React-Native实战Simple App
 
 
 ### 二、基于LBS的App：附近
-####（1）主要完成的功能有：
+1.主要完成的功能有：     
 
 + 附近的美食、附近的银行、附近的电影院、附近的卫生间;
 + 附近的搜索功能：美食、银行、电影院、卫生间
@@ -63,7 +63,7 @@ React-Native实战Simple App
 ![](pic/nearby/3.png)       
 ![](pic/nearby/4.png)       
 
-####（2）安装启动程序
+2.安装启动程序
 
 + 如果是模拟器，则使用模拟位置，修改nearby/Nearby/index.js文件中         
         
