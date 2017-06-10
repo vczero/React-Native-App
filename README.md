@@ -1,3 +1,5 @@
+**个人博客**：http://t.aissues.com/   
+
 # React-Native-App
 
 React-Native实战Simple App           
@@ -6,7 +8,7 @@ React-Native实战Simple App
 仓库地址： https://github.com/vczero/toilet          
 **苹果App Store搜索 厕所在哪, 即可下载**          
 
-###一、基于React-Native & Node通讯录App
+### 一、基于React-Native & Node通讯录App
 ####（1）主要完成的功能有：
 
 + 基于文件系统的Node.js服务端;
@@ -49,7 +51,7 @@ React-Native实战Simple App
 
 
 
-###二、基于LBS的App：附近
+### 二、基于LBS的App：附近
 ####（1）主要完成的功能有：
 
 + 附近的美食、附近的银行、附近的电影院、附近的卫生间;
