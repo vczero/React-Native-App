@@ -1,4 +1,4 @@
-**个人博客**：http://t.aissues.com/   
+  
 
 # React-Native-App
 
